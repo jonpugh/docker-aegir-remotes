@@ -28,7 +28,9 @@ RUN chsh -s /bin/bash aegir
 RUN mkdir /var/aegir/.ssh
 RUN mkdir /var/aegir/config
 RUN chmod 600 /var/aegir/.ssh
-RUN echo $AUTHORIZED_KEYS >> /var/aegir/.ssh/authorized_keys
+
+# @TODO: Remove.  Authorized key is set for each container, so it should be saved in run.sh
+# RUN echo $AUTHORIZED_KEYS >> /var/aegir/.ssh/authorized_keys
 
 # Configure apache
 RUN a2enmod rewrite
