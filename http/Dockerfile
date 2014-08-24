@@ -26,11 +26,13 @@ RUN adduser aegir www-data
 RUN echo 'aegir ALL=NOPASSWD: /usr/sbin/apache2ctl' >> /etc/sudoers.d/aegir
 RUN chsh -s /bin/bash aegir
 RUN mkdir /var/aegir/.ssh
+RUN mkdir /var/aegir/config
 RUN chmod 600 /var/aegir/.ssh
 RUN echo $AUTHORIZED_KEYS >> /var/aegir/.ssh/authorized_keys
 
 # Configure apache
 RUN a2enmod rewrite
+RUN service apache2 restart
 RUN ln -s /var/aegir/config/apache.conf /etc/apache2/conf.d/aegir.conf
 
 # Save start and run scripts
