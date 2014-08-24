@@ -11,14 +11,14 @@ FROM ubuntu:trusty
 MAINTAINER Jon Pugh <jon@thinkdrop.net>
 
 # Set authorized keys on docker container creation:
-ENV AUTHORIZED_KEYS 
+ENV AUTHORIZED_KEYS  ''
 
 # Update and Upgrade Apt
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y upgrade
 
 # Install required packages
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install rsync apache2 php5 php5-cli php5-mysql php5-curl php5-gd php-pear php-apc postfix mysql-client sudo
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install rsync apache2 php5 php5-cli php5-mysql php5-curl php5-gd php-pear php-apc postfix mysql-client sudo supervisor
 
 # Setup aegir user
 RUN adduser --system --group --home /var/aegir aegir
