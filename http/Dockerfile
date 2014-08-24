@@ -35,7 +35,7 @@ RUN chmod 600 /var/aegir/.ssh
 # Configure apache
 RUN a2enmod rewrite
 RUN service apache2 restart
-RUN ln -s /var/aegir/config/apache.conf /etc/apache2/conf.d/aegir.conf
+RUN ln -s /var/aegir/config/apache.conf /etc/apache2/conf-enabled/aegir.conf
 
 # Save start and run scripts
 ADD start.sh /start.sh
